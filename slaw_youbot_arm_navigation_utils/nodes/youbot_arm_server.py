@@ -54,13 +54,13 @@ class ArmServer(object):
 
         self.arm_ik_action_server.start()
         # services
-        rospy.Service("/tuck_arm", Empty, self.tuck)
-        rospy.Service("/untuck_arm", Empty, self.untuck)
-        rospy.Service("/move_arm", MoveArm, self.move_arm)
-        rospy.Service("/move_arm_ik", MoveArmIK, self.move_arm_ik)
-        rospy.Service("/move_arm_linear", MoveArmLinear, self.move_arm_linear)
-        rospy.Service("/move_joints", MoveJoints, self.move_joints)
-        rospy.Service("/move_joints_diff", MoveJoints, self.move_joints_diff)
+        rospy.Service("tuck_arm", Empty, self.tuck)
+        rospy.Service("untuck_arm", Empty, self.untuck)
+        rospy.Service("move_arm", MoveArm, self.move_arm)
+        rospy.Service("move_arm_ik", MoveArmIK, self.move_arm_ik)
+        rospy.Service("move_arm_linear", MoveArmLinear, self.move_arm_linear)
+        rospy.Service("move_joints", MoveJoints, self.move_joints)
+        rospy.Service("move_joints_diff", MoveJoints, self.move_joints_diff)
 
     def move_arm_ik(self, req):
         assert isinstance(req, MoveArmIKRequest)

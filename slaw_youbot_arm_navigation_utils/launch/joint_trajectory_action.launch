@@ -6,7 +6,9 @@
       <rosparam file="$(find slaw_youbot_arm_navigation_utils)/config/joints_configuration.yaml" command="load" />
       <remap from="joint_states" to="/joint_states"/>
     </node>
-    <node pkg='slaw_youbot_arm_navigation_utils' type='joint_velocity_action.py' name='velocity_controller' output='screen' />
+    <node pkg='slaw_youbot_arm_navigation_utils' type='joint_velocity_action.py' name='velocity_controller' output='screen'>
+      <remap from="joint_states" to="/joint_states"/>
+    </node>>
   </group>
   <node pkg='slaw_youbot_arm_navigation_utils' type='side_joint_publisher.py' name='side_joint' output='screen' />
 

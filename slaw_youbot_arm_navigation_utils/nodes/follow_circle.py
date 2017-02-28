@@ -10,7 +10,7 @@ radius = 0.05
 height = -0.1
 steps = 100
 
-srv = rospy.ServiceProxy('/move_arm_linear', MoveArmLinear)
+srv = rospy.ServiceProxy('move_arm_linear', MoveArmLinear)
 req = MoveArmLinearRequest()
 req.horizontal = False
 req.side = 'left'
