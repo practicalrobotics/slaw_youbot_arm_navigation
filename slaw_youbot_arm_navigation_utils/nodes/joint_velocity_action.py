@@ -128,7 +128,7 @@ class JointVelocityController:
         self.linear_action_server.start()
 
         # subscriptions
-        rospy.Subscriber("/joint_states", JointState, self.joint_states_callback)
+        rospy.Subscriber("joint_states", JointState, self.joint_states_callback)
         rospy.Subscriber("~arm_cartesian_control", Twist, self.arm_cartesian_cb)
 
     def get_linear_movement_msg(self, target_pose, target_ang, max_speed, side, horizontal=False, endlink_angle=0.0,

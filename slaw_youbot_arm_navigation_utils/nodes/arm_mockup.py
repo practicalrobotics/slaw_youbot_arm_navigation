@@ -13,7 +13,7 @@ class ArmMockup:
         self.joint_names = rospy.get_param("joint_names")
         self.joints = rospy.get_param('joints')
 
-        self.joint_pub = rospy.Publisher('/joint_states', JointState, queue_size=10)
+        self.joint_pub = rospy.Publisher('joint_states', JointState, queue_size=10)
         self.configuration = np.array(arm_tucked)
         self.velocities = np.array([0.0] * len(arm_tucked))
         self.joint_msg = JointState()
@@ -26,8 +26,8 @@ class ArmMockup:
             self.min_values[idx] = self.joints[name]['min']
             self.max_values[idx] = self.joints[name]['max']
 
-        rospy.Subscriber('/arm_1/arm_controller/position_command', JointPositions, self.position_cb)
-        rospy.Subscriber('/arm_1/arm_controller/velocity_command', JointVelocities, self.velocities_cb)
+        rospy.Subscriber('arm_1/arm_controller/position_command', JointPositions, self.position_cb)
+        rospy.Subscriber('arm_1/arm_controller/velocity_command', JointVelocities, self.velocities_cb)
 
     def position_cb(self, msg):
         #self.velocities = np.array([0.0] * len(arm_tucked))

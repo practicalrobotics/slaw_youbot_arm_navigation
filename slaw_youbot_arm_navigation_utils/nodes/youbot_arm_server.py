@@ -31,22 +31,22 @@ class ArmServer(object):
 
         self.move_duration = rospy.get_param('~move_duration', 2.5)
         arm_position_action_name = rospy.get_param('~arm_joint_trajectory_action',
-                                                   '/arm_1/arm_controller/joint_trajectory_action')
+                                                   'arm_1/arm_controller/joint_trajectory_action')
 
         self.arm_position_joint_client = actionlib.SimpleActionClient(arm_position_action_name,
                                                                       FollowJointTrajectoryAction)
         arm_velocity_action_name = rospy.get_param('~arm_velocity_trajectory_action',
-                                                   '/arm_1/arm_controller/joint_velocity_action')
+                                                   'arm_1/arm_controller/joint_velocity_action')
         self.arm_velocity_joint_client = actionlib.SimpleActionClient(arm_velocity_action_name,
                                                                       VelocityControlledJointTrajectoryAction)
 
         arm_linear_action_name = rospy.get_param('~arm_linear_trajectory_action',
-                                                   '/arm_1/arm_controller/follow_linear_positions')
+                                                   'arm_1/arm_controller/follow_linear_positions')
         self.arm_linear_joint_client = actionlib.SimpleActionClient(arm_linear_action_name,
                                                                       MoveArmLinearAction)
 
         # subscriber
-        rospy.Subscriber('/joint_states', JointState, self.joint_states_callback)
+        rospy.Subscriber('joint_states', JointState, self.joint_states_callback)
 
         # action
         self.arm_ik_action_server = actionlib.simple_action_server.SimpleActionServer(

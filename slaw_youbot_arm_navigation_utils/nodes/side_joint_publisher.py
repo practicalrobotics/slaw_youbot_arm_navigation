@@ -13,7 +13,7 @@ class SideJointPublisher:
     def __init__(self):
         self.joint_name = rospy.get_param("side_joint_name", 'side_joint')
 
-        self.joint_pub = rospy.Publisher('/joint_states', JointState, queue_size=10)
+        self.joint_pub = rospy.Publisher('joint_states', JointState, queue_size=10)
         self.side = 'left'
         self.configuration = [SIDE_VALUES[self.side]]
 
@@ -22,7 +22,7 @@ class SideJointPublisher:
         self.joint_msg.name = [self.joint_name]
         self.joint_msg.position = self.configuration
         self.joint_msg.velocity = [0.]
-        rospy.Service('/set_side_joint', SetSide, self.set_side_cb)
+        rospy.Service('set_side_joint', SetSide, self.set_side_cb)
 
     def set_side_cb(self, req):
         res = SetSideResponse()
