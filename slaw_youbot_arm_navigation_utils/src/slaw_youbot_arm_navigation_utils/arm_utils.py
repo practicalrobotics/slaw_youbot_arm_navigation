@@ -148,7 +148,7 @@ def create_backplate_trajectory(backplate_pose, z_offset=0.0):
     else:
         rospy.logfatal("NOOOOOOOO POSE!!!!")
 
-    if not backplate_pose.description == BackplatePoseIdentifier.CENTER:
+    if not backplate_pose.description == BackplatePoseIdentifier.DROP:
         conf[0] -= CENTER_ANGLE[backplate_pose.index]
 
     traj.append(conf)
