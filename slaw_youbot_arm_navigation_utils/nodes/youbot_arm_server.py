@@ -20,7 +20,8 @@ from trajectory_msgs.msg import JointTrajectoryPoint
 from slaw_youbot_arm_navigation_utils.arm_utils import create_arm_up, create_tucked, joint_names, get_forward_angle_joint_5, \
     call_ik_solver, configuration_to_array
 
-MAX_SPEED = math.pi/2.
+#MAX_SPEED = math.pi/2.
+MAX_SPEED = 2.0
 CHECK_STATUS_RATE = 20
 
 

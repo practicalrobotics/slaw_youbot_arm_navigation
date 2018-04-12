@@ -56,6 +56,9 @@ def calc_joints_for_point(point, offset=0.0, horizontal=False, endlink_angle=0.0
 
         conf = calc_joints_for_height_and_projected_distance(projected_distance, height, endlink_angle,
                                                              endeffector_offset=endeffector_offset)
+        if conf is None:
+            return None
+
         angle = math.atan2(point.y, point.x)
 
         # rotate joint 1 and 5 for angle
@@ -86,6 +89,7 @@ def calc_joints_for_height_and_projected_distance(projected_distance, height, en
 
     # cannot reach further than sum of joint 2 and 3
     if triangle_dist > max_reach_triangle:
+        #print "Error: triangle distance", triangle_dist, "larger than max reach", max_reach_triangle
         return None
     config = calc_joints_for_triangle_dist(triangle_dist)
 
